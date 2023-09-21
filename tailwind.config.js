@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sofia: ["Sofia", "cursive"],
+        sofia: ["Caveat", "cursive"],
       },
       colors: {
         rose: "#BE123C",
