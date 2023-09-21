@@ -40,7 +40,7 @@ const Navbar = () => {
             title="logo"
             to={`/`}
           >
-            <h1 className=" font-sofia">Realice</h1>
+            <h1 className=" font-caveat">Realice</h1>
           </NavLink>
         </div>
         <div className="flex items-center">
