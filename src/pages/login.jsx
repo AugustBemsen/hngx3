@@ -17,20 +17,20 @@ const LogIn = () => {
   //log in function
   const handleSubmit = (e) => {
     e.preventDefault();
-    try {
+    if (email && password) {
       setLoading(true);
-      signInWithEmailAndPassword(auth, email, password).then(
-        (userCredential) => {
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
           // Signed in
           navigate("/showroom");
-          toast.success("Welcome to the show!");
+          toast.success(`Welcome ${email}`);
           setLoading(false);
-        }
-      );
-    } catch (error) {
-      const errorMessage = error.message;
-      toast.error(errorMessage);
-      setLoading(false);
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          toast.error(errorMessage);
+          setLoading(false);
+        });
     }
   };
 
@@ -84,9 +84,9 @@ const LogIn = () => {
             type="submit"
             className={`w-full ${
               loading === true ? "bg-gray-300" : ""
-            } p-2 mt-6 h-12 mb-6 text-lg font-bold text-center text-gray-100 rounded bg-gray-950 bg-opacity-95 hover:bg-opacity-100 `}
+            } p-2 mt-6 h-12 mb-6 text-lg font-bold text-center flex justify-center items-center text-gray-100 rounded bg-gray-950 bg-opacity-95 hover:bg-opacity-100 `}
           >
-            {loading ? "Signing in" : "Log In"}
+            {loading ? <div className="loader" /> : "Log In"}
           </button>
         </form>
       </div>

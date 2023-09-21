@@ -31,7 +31,8 @@ export const AppProvider = ({ children }) => {
     //successful signout
     await signOut(auth)
       .then(() => {
-        toast.success("Successfully logged out");
+        toast.success("Hope to see you soon!");
+        window.location.replace("/");
       })
       .catch((error) => {
         // errors

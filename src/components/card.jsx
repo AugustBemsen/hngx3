@@ -12,7 +12,7 @@ const ImageCard = ({ image, isDragging }) => {
         isDragging === image.id ? "dragging" : ""
       } relative flex flex-col items-center justify-center p-2`}
     >
-      <div className="hidden xs:grid xs:w-[200px] xs:h-[150px] cursor-grab">
+      <div className="hidden xs:grid xs:w-[230px] xs:h-[230px] cursor-grab">
         <LazyLoadImage
           src={
             image.url ? (

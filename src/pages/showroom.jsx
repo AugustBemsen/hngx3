@@ -1,18 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { isMobile } from "react-device-detect";
-import { toast } from "react-toastify";
 import { AppContext } from "../context/AppContext";
 
 import ImageCard from "../components/card";
+import Navbar from "../components/Navbar";
 
 const Gallery = () => {
-  const navigate = useNavigate();
   const { data, loading, user, query, setQuery } = useContext(AppContext);
 
   useEffect(() => {
     if (!user) {
-      navigate("/showroom");
+      window.location.replace("/");
     }
   }, [user]);
 
@@ -53,10 +51,6 @@ const Gallery = () => {
     updatedItems[draggedIndex] = updatedItems[targetIndex];
     updatedItems[targetIndex] = temp;
 
-    toast.warning(
-      `Replaced ${targetItem.tag} with ${updatedItems[targetIndex].tag}`
-    );
-
     setImages(updatedItems);
     setDraggedItem(null);
   };
@@ -89,13 +83,6 @@ const Gallery = () => {
         e.touches[0].clientY
       );
 
-      if (newIndex !== -1) {
-        const movedImage = images[draggedItem.index];
-        const targetImage = images[newIndex];
-
-        toast.warning(`Replaced ${movedImage.tag} with ${targetImage.tag}`);
-      }
-
       // Update the images state accordingly
       const newItems = [...images];
       const oldIndex = images.indexOf(draggedItem);
@@ -127,20 +114,20 @@ const Gallery = () => {
   };
 
   return (
-    <div>
+    <>
+      <Navbar />
       <div className="flex flex-col items-center justify-center px-3 pt-3 pb-1 ">
         <div className=" sm:w-[60%] xs:w-[80%] w-full">
           <input
             type="search"
             value={query}
             onChange={handleInputChange}
-            className="p-2 h-[50px] w-full  bg-slate-50 rounded-lg my-6 shadow-sm border"
+            className="p-2 h-[60px] outline-none w-full  bg-slate-50 rounded-lg my-6 shadow-sm border"
             placeholder="Search by tags: e.g nature, landscape..."
           />
         </div>
       </div>
 
-      {/*image card */}
       <div className="flex items-center justify-center w-full bg-slate-50">
         <div className="p-4 card xs:bg-white border my-10 py-10 sm:w-[90%] xs:w-[95%] w-full">
           {loading ? (
@@ -189,7 +176,7 @@ const Gallery = () => {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
