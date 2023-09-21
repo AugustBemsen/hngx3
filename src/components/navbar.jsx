@@ -8,7 +8,7 @@ const Navbar = () => {
   const { onLogout } = useContext(AppContext);
 
   const handleScroll = () => {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 90) {
       setIsSticky(true);
     } else {
       setIsSticky(false);
@@ -31,7 +31,7 @@ const Navbar = () => {
         isSticky
           ? "fixed top-0 left-0 py-6 w-full bg-white shadow-md z-[50]"
           : ""
-      } xs:p-4 py-4 pl-1 pr-2 transition-all duration-300 ease-in-out shadow`}
+      } xs:p-4 py-4 pl-1 pr-2 transition-all duration-1000 ease-in-out shadow`}
     >
       <div className="container flex items-center justify-between mx-auto">
         <div className="text-2xl font-bold text-gray-800">
