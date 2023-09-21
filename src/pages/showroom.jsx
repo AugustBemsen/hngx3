@@ -3,7 +3,7 @@ import { isMobile } from "react-device-detect";
 import { AppContext } from "../context/AppContext";
 
 import ImageCard from "../components/card";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 
 const Gallery = () => {
   const { data, loading, user, query, setQuery } = useContext(AppContext);
